@@ -16,6 +16,7 @@ public class ParkingLotMain{
 			String line, command;
 			String regNo, colour;
 			int parkingres;
+			int num;
 			line = sc.nextLine();
 			int count= Integer.parseInt(line.split(" ")[1]);
 			parkingLot = new ParkingLotImpl(count);
@@ -26,6 +27,9 @@ public class ParkingLotMain{
 				command = commandLine[0];
 				switch(Commands.getCommand(command)){
 				case LEAVE:
+					num = Integer.parseInt(commandLine[1]);
+					parkingLot.leaveCar(num-1);
+					System.out.println("Slot number "+num+" is free");
 					break;
 				case PARK:
 					regNo = commandLine[1];
@@ -38,12 +42,15 @@ public class ParkingLotMain{
 						System.out.println("Sorry, parking lot is full");
 					break;
 				case REG_NUMBERS:
+					colour = commandLine[1];
+					parkingLot.getRegNumberForColor(colour);
 					break;
 				case SLOT_COLOUR:
 					break;
 				case SLOT_REG:
 					break;
 				case STATUS:
+					parkingLot.getStatus();
 					break;
 				default:
 					break;

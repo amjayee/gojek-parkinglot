@@ -41,5 +41,24 @@ public class ParkingLotImpl{
 		parkingLotMap.put(slotNum, null);
 	}
 	
+	public void getStatus(){
+		System.out.println("Slot No.   Registration No       Colour");
+		for(int i=0;i<capacity;i++){
+			Car r = parkingLotMap.get(i);
+			if(r != null){
+				System.out.println(i+1 +"      "+r.getRegNo()+"     "+r.getColour());
+			}
+		}
+	}
+	
+	public void getRegNumberForColor(String colour){
+		for(int i=0;i<capacity;i++){
+			Car r = parkingLotMap.get(i);
+			if(r != null && colour.equals(r.getColour())){
+				System.out.print(r.getRegNo()+" ");
+			}
+		}
+	}
+	
 	
 }
