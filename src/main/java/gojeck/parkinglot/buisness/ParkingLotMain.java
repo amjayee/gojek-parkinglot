@@ -46,8 +46,17 @@ public class ParkingLotMain{
 					parkingLot.getRegNumberForColor(colour);
 					break;
 				case SLOT_COLOUR:
+					colour = commandLine[1];
+					parkingLot.getSlotNumberForColor(colour);
 					break;
 				case SLOT_REG:
+					regNo = commandLine[1];
+					parkingres = parkingLot.getSlotNumberForReqNumber(regNo);
+					if(parkingres != -1){
+						System.out.println(parkingres);
+					}
+					else
+						System.out.println("Not Found");
 					break;
 				case STATUS:
 					parkingLot.getStatus();

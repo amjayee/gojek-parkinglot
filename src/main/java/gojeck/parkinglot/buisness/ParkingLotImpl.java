@@ -55,9 +55,31 @@ public class ParkingLotImpl{
 		for(int i=0;i<capacity;i++){
 			Car r = parkingLotMap.get(i);
 			if(r != null && colour.equals(r.getColour())){
-				System.out.print(r.getRegNo()+" ");
+				System.out.print(r.getRegNo()+", ");
 			}
 		}
+		System.out.println();
+	}
+	
+	public void getSlotNumberForColor(String colour){
+		for(int i=0;i<capacity;i++){
+			Car r = parkingLotMap.get(i);
+			if(r != null && colour.equals(r.getColour())){
+				System.out.print((i+1)+", ");
+			}
+		}
+		System.out.println();
+	}
+	
+	public int getSlotNumberForReqNumber(String regNum){
+		int res=-1;
+		for(int i=0;i<capacity;i++){
+			Car r = parkingLotMap.get(i);
+			if(r != null && regNum.equals(r.getRegNo())){
+				res = i+1;
+			}
+		}
+		return res;
 	}
 	
 	
