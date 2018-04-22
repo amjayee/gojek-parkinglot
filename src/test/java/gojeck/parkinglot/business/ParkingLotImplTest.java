@@ -15,8 +15,6 @@ public class ParkingLotImplTest{
 	public void property() throws Exception
 	{
 		
-//		parkingLotImpl = PowerMockito.mock(ParkingLotImpl.class);
-//		PowerMockito.whenNew(ParkingLotImpl.class).withAnyArguments().thenReturn(parkingLotImpl);
 	}
 	
 	@Test
