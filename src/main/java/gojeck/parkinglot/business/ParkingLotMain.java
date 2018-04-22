@@ -1,4 +1,4 @@
-package gojeck.parkinglot.buisness;
+package gojeck.parkinglot.business;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,12 +10,21 @@ import gojeck.parkinglot.data.Commands;
 public class ParkingLotMain{
 	public static void main(String[] args){
 		ParkingLotImpl parkingLot;
-		File f = new File("/Users/m0j00b9/Documents/workspace/gojeck.parkinglot/file_inputs.txt");
+		
+		Scanner sc ;
 		try {
-			Scanner sc = new Scanner(f);
+			
+			if(args.length > 0){
+				String fileName = args[0];
+				File f = new File(fileName);
+				sc = new Scanner(f);
+			}
+			else
+				sc = new Scanner(System.in);
 			String line, command;
 			String regNo, colour;
 			int parkingres;
+			int num;
 			line = sc.nextLine();
 			int count= Integer.parseInt(line.split(" ")[1]);
 			parkingLot = new ParkingLotImpl(count);
@@ -26,6 +35,9 @@ public class ParkingLotMain{
 				command = commandLine[0];
 				switch(Commands.getCommand(command)){
 				case LEAVE:
+					num = Integer.parseInt(commandLine[1]);
+					parkingLot.leaveCar(num-1);
+					System.out.println("Slot number "+num+" is free");
 					break;
 				case PARK:
 					regNo = commandLine[1];
@@ -38,12 +50,24 @@ public class ParkingLotMain{
 						System.out.println("Sorry, parking lot is full");
 					break;
 				case REG_NUMBERS:
+					colour = commandLine[1];
+					parkingLot.getRegNumberForColor(colour);
 					break;
 				case SLOT_COLOUR:
+					colour = commandLine[1];
+					parkingLot.getSlotNumberForColor(colour);
 					break;
 				case SLOT_REG:
+					regNo = commandLine[1];
+					parkingres = parkingLot.getSlotNumberForReqNumber(regNo);
+					if(parkingres != -1){
+						System.out.println(parkingres);
+					}
+					else
+						System.out.println("Not Found");
 					break;
 				case STATUS:
+					parkingLot.getStatus();
 					break;
 				default:
 					break;
