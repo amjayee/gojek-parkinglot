@@ -1,4 +1,4 @@
-package gojeck.parkinglot.buisness;
+package gojeck.parkinglot.business;
 
 import java.io.File;
 import java.io.FileNotFoundException;

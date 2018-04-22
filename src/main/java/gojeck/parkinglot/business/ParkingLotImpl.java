@@ -1,4 +1,4 @@
-package gojeck.parkinglot.buisness;
+package gojeck.parkinglot.business;
 
 import java.util.ArrayList;
 import java.util.HashMap;
