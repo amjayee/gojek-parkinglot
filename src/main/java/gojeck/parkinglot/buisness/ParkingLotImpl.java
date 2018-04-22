@@ -1,6 +1,8 @@
 package gojeck.parkinglot.buisness;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.TreeSet;
 
 import gojeck.parkinglot.data.Car;
@@ -42,33 +44,35 @@ public class ParkingLotImpl{
 	}
 	
 	public void getStatus(){
-		System.out.println("Slot No.   Registration No       Colour");
+		System.out.println("Slot No\tRegistration No\tColour");
 		for(int i=0;i<capacity;i++){
 			Car r = parkingLotMap.get(i);
 			if(r != null){
-				System.out.println(i+1 +"      "+r.getRegNo()+"     "+r.getColour());
+				System.out.println(i+1 +"\t"+r.getRegNo()+"\t"+r.getColour());
 			}
 		}
 	}
 	
 	public void getRegNumberForColor(String colour){
+		List<String> res = new ArrayList<String>();
 		for(int i=0;i<capacity;i++){
 			Car r = parkingLotMap.get(i);
 			if(r != null && colour.equals(r.getColour())){
-				System.out.print(r.getRegNo()+", ");
+				res.add(r.getRegNo());
 			}
 		}
-		System.out.println();
+		printStringList(res);
 	}
 	
 	public void getSlotNumberForColor(String colour){
+		List<Integer> res = new ArrayList<Integer>();
 		for(int i=0;i<capacity;i++){
 			Car r = parkingLotMap.get(i);
 			if(r != null && colour.equals(r.getColour())){
-				System.out.print((i+1)+", ");
+				res.add(i+1);
 			}
 		}
-		System.out.println();
+		printIntegerList(res);
 	}
 	
 	public int getSlotNumberForReqNumber(String regNum){
@@ -80,6 +84,22 @@ public class ParkingLotImpl{
 			}
 		}
 		return res;
+	}
+	
+	private void printStringList(List<String> list){
+		int i=0;
+		for(i=0;i<list.size()-1;i++){
+			System.out.print(list.get(i)+", ");
+		}
+		System.out.println(list.get(i));
+	}
+	
+	private void printIntegerList(List<Integer> list){
+		int i=0;
+		for(i=0;i<list.size()-1;i++){
+			System.out.print(list.get(i)+", ");
+		}
+		System.out.println(list.get(i));
 	}
 	
 	

@@ -10,9 +10,17 @@ import gojeck.parkinglot.data.Commands;
 public class ParkingLotMain{
 	public static void main(String[] args){
 		ParkingLotImpl parkingLot;
-		File f = new File("/Users/m0j00b9/Documents/workspace/gojeck.parkinglot/file_inputs.txt");
+		
+		Scanner sc ;
 		try {
-			Scanner sc = new Scanner(f);
+			
+			if(args.length > 0){
+				String fileName = args[0];
+				File f = new File(fileName);
+				sc = new Scanner(f);
+			}
+			else
+				sc = new Scanner(System.in);
 			String line, command;
 			String regNo, colour;
 			int parkingres;

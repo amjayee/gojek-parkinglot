@@ -3,4 +3,25 @@
   <groupId>gojeck</groupId>
   <artifactId>gojeck.parkinglot</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
+<build>
+  <plugins>
+    <plugin>
+      <!-- Build an executable JAR -->
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>3.0.2</version>
+      <configuration>
+        <archive>
+          <manifest>
+            <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>gojeck.parkinglot.buisness.ParkingLotMain</mainClass>
+          </manifest>
+        </archive>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+
 </project>
